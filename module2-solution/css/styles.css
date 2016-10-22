@@ -1,0 +1,71 @@
+@font-face {
+	font-family:  'Montserrat-Bold';
+	src: url('../fonts/Montserrat-Bold/Montserrat-Bold.eot');
+	src: url('../fonts/Montserrat-Bold/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Montserrat-Bold/Montserrat-Bold.svg') format('svg'),
+		url('../fonts/Montserrat-Bold/Montserrat-Bold.ttf') format('truetype'),
+		url('../fonts/Montserrat-Bold/Montserrat-Bold.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+#wrapper {}
+#wrapper > h1 {
+	font-family: 'Montserrat-Bold', Arial, sans-serif;
+	font-size: 30px;
+	color: green;
+	text-align: center;
+	padding: 30px 0 30px;
+}
+.content {
+	padding: 15px;
+}
+.box {
+	width: 33.333%;
+	float: left;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	padding: 10 15px;
+}
+.box-container {
+	position: relative;
+	border: 1px solid black;
+	background: rgba(0,0,0,0.5);
+}
+.title {
+	background-color: blue;
+	border: 1px solid black;
+	position: absolute;
+	padding: 5px 10px;
+	top: 0;
+	right: 0;
+}
+.title h5 {
+	font-family: 'Montserrat-Bold', Arial, sans-serif;
+	font-size: 25px;
+	text-align: center;
+	color: black;
+}
+.content {
+	padding-top: 40px;
+}
+.content > p {}
+@media (min-width: 768px) and (max-width: 991px) {
+	.box{
+		width: 50%;
+	}
+	.box:last-child {
+		width: 100%;
+	}
+	.title h5 {
+		font-size: 20px;
+	}
+}
+@media (max-width: 767px) {
+	.box {
+		width: 100%;
+	}
+	.title h5 {
+		font-size: 15px;
+	}
+}
