@@ -18,7 +18,7 @@
 .navbar-brand > a {
 	font-family: 'Montserrat-Bold', Arial, sans-serif;
 	font-size: 25px;
-	color: blue;
+	color: #3e5712;
 	text-decoration: none;
 }
 #main-container {
@@ -27,7 +27,7 @@
 .title-header h1{
 	font-family: 'Montserrat-Bold', Arial, sans-serif;
 	font-size: 30px;
-	color: green;
+	color: #371504;
 	text-align: center;
 	padding: 30px 0 30px;
 }
@@ -39,7 +39,7 @@
 	background: rgba(0,0,0,0.5);
 }
 .title {
-	background-color: blue;
+	background-color: #371504;
 	border: 1px solid black;
 	position: absolute;
 	padding: 5px 10px;
