@@ -62,6 +62,12 @@ var switchMenuToActive = function () {
 
 // On page load (before images or CSS)
 document.addEventListener("DOMContentLoaded", function (event) {
+  showLoading("#main-content");
+  $ajaxUtils.sendGetRequest(
+    allCategoriesUrl,
+    buildAndShowHomeHTML, 
+    true); 
+});
 
 // TODO: STEP 0: Look over the code from
 // *** start ***
@@ -80,17 +86,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 // *** start ***
 // On first load, show home view
-showLoading("#main-content");
-$ajaxUtils.sendGetRequest(
-  allCategoriesUrl,
-  function (responseText) {
-    document.querySelector("#main-content")
-      .innerHTML = responseText;
-  },
-   // ***** <---- TODO: STEP 1: Substitute [...] ******
-  true); // Explicitely setting the flag to get JSON from server processed into an object literal
-});
-
 // *** finish **
 
 
@@ -102,7 +97,11 @@ function buildAndShowHomeHTML (categories) {
   $ajaxUtils.sendGetRequest(
     homeHtmlUrl,
     function (homeHtml) {
-      dc.sendGetRequest()
+      var chosenCategoryShortName = chooseRandomCategory(categories).short_name;
+      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", "'" + chosenCategoryShortName + "'");
+      insertHtml("#main-content",homeHtmlToInsertIntoMainPage);
+
+      
       // TODO: STEP 2: Here, call chooseRandomCategory, passing it retrieved 'categories'
       // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
       // variable's name implies it expects.
@@ -127,10 +126,6 @@ function buildAndShowHomeHTML (categories) {
       // Use the existing insertHtml function for that purpose. Look through this code for an example
       // of how to do that.
       // ....
-      var chosenCategoryShortName = chooseRandomCategory(categories);
-      var homeHtmlToInsertIntoMainPage =       
-
-
 
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
@@ -184,6 +179,7 @@ function buildAndShowCategoriesHTML (categories) {
             buildCategoriesViewHtml(categories,
                                     categoriesTitleHtml,
                                     categoryHtml);
+          // alert('buildCategoriesViewHtml categoriesViewHtml: '+ categoriesViewHtml);
           insertHtml("#main-content", categoriesViewHtml);
         },
         false);
@@ -213,6 +209,7 @@ function buildCategoriesViewHtml(categories,
       insertProperty(html,
                      "short_name",
                      short_name);
+      // alert(' insert property html: '+ html);
     finalHtml += html;
   }
 
@@ -350,3 +347,4 @@ function insertItemPortionName(html,
 global.$dc = dc;
 
 })(window);
+
